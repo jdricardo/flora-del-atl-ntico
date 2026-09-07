@@ -81,6 +81,7 @@ export function getRelatedProducts(product: Product, limit = 4): Product[] {
 }
 
 export function getPriceRange(): { min: number; max: number } {
+  const PRODUCTS = getProducts();
   const prices = PRODUCTS.map((product) => product.price);
   return { min: Math.min(...prices), max: Math.max(...prices) };
 }

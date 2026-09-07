@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { Product, ProductBadge, CategorySlug } from '@/types';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import type { Product } from '@/types';
 import { PRODUCTS as INITIAL_PRODUCTS } from '@/data/products';
 import { secureStorage } from '@/lib/secure-storage';
 
@@ -137,7 +137,7 @@ export const useAdminProductsStore = create<AdminProductsState>()(
     }),
     {
       name: 'admin-products-storage',
-      storage: secureStorage, // Usar storage encriptado
+      storage: createJSONStorage(() => secureStorage),
     }
   )
 );

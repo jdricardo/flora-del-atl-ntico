@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAdminProductsStore } from '@/store/useAdminProductsStore';
 import { Button } from '@/components/ui/Button';
 import { CATEGORY_LABELS } from '@/data/categories';
