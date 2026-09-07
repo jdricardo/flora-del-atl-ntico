@@ -26,7 +26,16 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Los VITE_* se inyectan en build time: sin esto el hash llega como
+      # undefined al bundle y el login del admin queda bloqueado en Pages.
       - run: npm run build
+        env:
+          VITE_ADMIN_PASSWORD_HASH: ${{ secrets.VITE_ADMIN_PASSWORD_HASH }}
+          VITE_ENCRYPTION_KEY: ${{ secrets.VITE_ENCRYPTION_KEY }}
+          VITE_SESSION_TIMEOUT: ${{ vars.VITE_SESSION_TIMEOUT || '30' }}
+          VITE_MAX_LOGIN_ATTEMPTS: ${{ vars.VITE_MAX_LOGIN_ATTEMPTS || '5' }}
+          VITE_LOCKOUT_TIME: ${{ vars.VITE_LOCKOUT_TIME || '15' }}
 
       # Pages no reescribe rutas hacia index.html: sin esta copia, recargar
       # /tienda o entrar por un enlace directo devuelve el 404 de GitHub.
