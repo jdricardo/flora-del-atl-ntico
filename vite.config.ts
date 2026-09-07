@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 
-export default defineConfig({
+// El build de producción se sirve desde https://jdricardo.github.io/flora-del-atl-ntico/
+const REPO_BASE = '/flora-del-atl-ntico/';
+
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? REPO_BASE : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -14,4 +18,4 @@ export default defineConfig({
     port: 5173,
     open: false,
   },
-});
+}));
