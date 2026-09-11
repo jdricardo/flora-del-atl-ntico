@@ -7,7 +7,14 @@
 
 /* ============================== Catálogo ============================== */
 
-export const CATEGORY_SLUGS = ['flores-frescas', 'flores-eternas', 'amor-y-amistad', 'hogar'] as const;
+export const CATEGORY_SLUGS = [
+  'arreglos-caja',
+  'arreglos-base',
+  'ramos-clasicos',
+  'ramos-premium',
+  'ramos-tropicales',
+  'arreglos-funebres',
+] as const;
 export type CategorySlug = (typeof CATEGORY_SLUGS)[number];
 
 export type ProductBadge = 'nuevo' | 'bestseller' | 'edicion-limitada' | 'premium';

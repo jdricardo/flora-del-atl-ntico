@@ -62,10 +62,6 @@ export function LoginPage() {
             <Button type="submit" className="w-full">
               Iniciar sesión
             </Button>
-
-            <p className="text-center text-xs text-ink-muted">
-              Contraseña demo: <code className="rounded bg-stone-100 px-1">admin123</code>
-            </p>
           </form>
         </div>
       </div>

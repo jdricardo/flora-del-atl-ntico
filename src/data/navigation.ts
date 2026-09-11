@@ -6,24 +6,24 @@ export interface NavItem {
 /** Menú principal. `/tienda` acepta el parámetro `categoria`. */
 export const MAIN_NAV: NavItem[] = [
   { label: 'Tienda', to: '/tienda' },
-  { label: 'Flores frescas', to: '/tienda?categoria=flores-frescas' },
-  { label: 'Flores eternas', to: '/tienda?categoria=flores-eternas' },
-  { label: 'Regalos', to: '/tienda?categoria=regalos' },
-  { label: 'Hogar', to: '/tienda?categoria=hogar' },
+  { label: 'Ramos clásicos', to: '/tienda?categoria=ramos-clasicos' },
+  { label: 'Arreglos en caja', to: '/tienda?categoria=arreglos-caja' },
+  { label: 'Arreglos en base', to: '/tienda?categoria=arreglos-base' },
+  { label: 'Tropicales', to: '/tienda?categoria=ramos-tropicales' },
   { label: 'Nosotros', to: '/nosotros' },
   { label: 'Contacto', to: '/contacto' },
 ];
 
 export const FOOTER_NAV: { title: string; items: NavItem[] }[] = [
   {
-    title: 'Colección',
+    title: 'Catálogo',
     items: [
       { label: 'Toda la tienda', to: '/tienda' },
-      { label: 'Flores frescas', to: '/tienda?categoria=flores-frescas' },
-      { label: 'Flores eternas', to: '/tienda?categoria=flores-eternas' },
-      { label: 'Regalos', to: '/tienda?categoria=regalos' },
-      { label: 'Hogar', to: '/tienda?categoria=hogar' },
-      { label: 'Más vendidos', to: '/tienda?orden=mas-vendidos' },
+      { label: 'Arreglos en caja', to: '/tienda?categoria=arreglos-caja' },
+      { label: 'Arreglos en base', to: '/tienda?categoria=arreglos-base' },
+      { label: 'Ramos clásicos', to: '/tienda?categoria=ramos-clasicos' },
+      { label: 'Ramos premium', to: '/tienda?categoria=ramos-premium' },
+      { label: 'Ramos tropicales', to: '/tienda?categoria=ramos-tropicales' },
     ],
   },
   {
@@ -56,4 +56,5 @@ export const FOOTER_NAV: { title: string; items: NavItem[] }[] = [
   },
 ];
 
-export const PAYMENT_LOGOS = ['Visa', 'Mastercard', 'Amex', 'PSE', 'Nequi', 'Bancolombia'];
+/** Medios de pago que recibe la floristería, según el catálogo. */
+export const PAYMENT_LOGOS = ['Transferencia', 'Efectivo'];

@@ -24,7 +24,7 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
   const [formData, setFormData] = useState({
     id: product?.id || '',
     name: product?.name || '',
-    category: product?.category || ('flores-frescas' as CategorySlug),
+    category: product?.category || ('ramos-clasicos' as CategorySlug),
     collection: product?.collection || '',
     price: product?.price || 0,
     compareAtPrice: product?.compareAtPrice || 0,

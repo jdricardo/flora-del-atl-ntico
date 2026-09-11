@@ -34,11 +34,10 @@ export function PurchasePanel({ product }: { product: Product }) {
   const available = product.stock > 0;
   const maxUnits = Math.max(1, Math.min(20, product.stock));
 
-  // La flor fresca no viaja a ciudades de solo preservado.
-  const coverageWarning =
-    city?.preservedOnly && product.category === 'flores-frescas'
-      ? `A ${city.name} solo enviamos flores preservadas, regalos y objetos. Te sugerimos la colección Eterna.`
-      : null;
+  // Fuera de la zona de cobertura la flor fresca no viaja sola: se coordina.
+  const coverageWarning = city?.preservedOnly
+    ? `A ${city.name} no llegamos con entrega directa. Escríbenos por WhatsApp antes de hacer el pedido para coordinar el envío.`
+    : null;
 
   const options = {
     deliveryDate,

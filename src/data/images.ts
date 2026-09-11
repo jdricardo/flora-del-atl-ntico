@@ -2,13 +2,13 @@
  * Registro de imágenes.
  *
  * Las imágenes viven en `src/assets/images` y se resuelven en build (hash +
- * cache busting). Para reemplazar un placeholder por fotografía real basta
- * con dejar el archivo con el mismo nombre y añadir su extensión al glob.
+ * cache busting). Las fotos del catálogo impreso están en el subdirectorio
+ * `catalogo/`, una por referencia (c01.jpg, b03.jpg, r17.jpg...).
  *
  * Cuando el catálogo venga de una API, `Product.images` recibirá URLs
  * absolutas y este módulo solo se usará para el contenido editorial.
  */
-const files = import.meta.glob<string>('../assets/images/*.{svg,jpg,jpeg,png,webp,avif}', {
+const files = import.meta.glob<string>('../assets/images/**/*.{svg,jpg,jpeg,png,webp,avif}', {
   eager: true,
   import: 'default',
   query: '?url',
@@ -29,7 +29,20 @@ export function img(key: string): string {
   return registry.get(key) ?? FALLBACK;
 }
 
-/** Las tres tomas de un producto: principal + dos secundarias para la galería. */
+/**
+ * Fotos de un producto para la galería.
+ *
+ * El catálogo impreso trae una sola toma por referencia, así que se devuelve
+ * esa; el esquema `id-1 / id-2 / id-3` sigue soportado para los productos que
+ * lleguen con varias fotos.
+ */
 export function productShots(id: string): string[] {
-  return [img(`${id}-1`), img(`${id}-2`), img(`${id}-3`)];
+  const single = registry.get(id);
+  if (single) return [single];
+
+  const numbered = [1, 2, 3]
+    .map((n) => registry.get(`${id}-${n}`))
+    .filter((url): url is string => Boolean(url));
+
+  return numbered.length > 0 ? numbered : [FALLBACK];
 }

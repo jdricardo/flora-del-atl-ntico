@@ -34,7 +34,7 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink to="/tienda?categoria=flores-frescas" size="lg">
+              <ButtonLink to="/tienda?categoria=ramos-clasicos" size="lg">
                 Comprar flores
               </ButtonLink>
               <ButtonLink to="/tienda" variant="secondary" size="lg">

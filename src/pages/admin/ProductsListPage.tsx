@@ -11,6 +11,7 @@ export function ProductsListPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [aviso, setAviso] = useState('');
 
   // Filtrar productos
   const filteredProducts = useMemo(() => {
@@ -38,6 +39,14 @@ export function ProductsListPage() {
     }
   };
 
+  const handleToggleActive = (id: string, name: string) => {
+    if (!toggleProductActive(id)) {
+      setAviso(`"${name}" no se puede publicar sin precio. Edítalo y asígnale uno.`);
+      return;
+    }
+    setAviso('');
+  };
+
   const handleDuplicate = (id: string) => {
     duplicateProduct(id);
   };
@@ -58,6 +67,18 @@ export function ProductsListPage() {
           + Nuevo producto
         </Button>
       </div>
+
+      {aviso && (
+        <div className="flex items-start justify-between gap-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3">
+          <p className="text-sm text-amber-900">{aviso}</p>
+          <button
+            onClick={() => setAviso('')}
+            className="text-sm font-medium text-amber-900 hover:underline"
+          >
+            Cerrar
+          </button>
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex flex-col gap-4 rounded-xl border border-stone-200 bg-white p-4 sm:flex-row">
@@ -148,14 +169,18 @@ export function ProductsListPage() {
                     {CATEGORY_LABELS[product.category]}
                   </td>
                   <td className="px-4 py-3 text-sm font-medium text-ink">
-                    {formatCOP(product.price)}
+                    {product.price > 0 ? (
+                      formatCOP(product.price)
+                    ) : (
+                      <span className="text-amber-700">Sin precio</span>
+                    )}
                   </td>
                   <td className="px-4 py-3 text-sm text-ink-muted">
                     {product.stock}
                   </td>
                   <td className="px-4 py-3">
                     <button
-                      onClick={() => toggleProductActive(product.id)}
+                      onClick={() => handleToggleActive(product.id, product.name)}
                       className={`rounded-full px-3 py-1 text-xs font-medium ${
                         product.active
                           ? 'bg-green-100 text-green-800'

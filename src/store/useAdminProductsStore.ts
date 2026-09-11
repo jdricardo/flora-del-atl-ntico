@@ -19,8 +19,8 @@ interface AdminProductsState {
   deleteProduct: (id: string) => void;
   duplicateProduct: (id: string) => void;
 
-  // Activar/Desactivar
-  toggleProductActive: (id: string) => void;
+  // Activar/Desactivar. Devuelve false si no se pudo publicar (sin precio).
+  toggleProductActive: (id: string) => boolean;
 
   // Actualizar imágenes
   updateProductImages: (id: string, images: string[]) => void;
@@ -33,10 +33,12 @@ interface AdminProductsState {
   resetToDefaults: () => void;
 }
 
-// Convertir productos iniciales a AdminProduct
+// Convertir productos iniciales a AdminProduct.
+// Un producto sin precio nace oculto: el catálogo fúnebre no trae precios y
+// no queremos publicarlos en $0 mientras la floristería los define.
 const initialAdminProducts: AdminProduct[] = INITIAL_PRODUCTS.map((product) => ({
   ...product,
-  active: true,
+  active: product.price > 0,
   updatedAt: new Date().toISOString(),
 }));
 
@@ -99,18 +101,23 @@ export const useAdminProductsStore = create<AdminProductsState>()(
         set({ products: [...allProducts, duplicated] });
       },
 
+      /**
+       * Alterna la visibilidad. Publicar exige precio: si no, el producto
+       * saldría en la tienda marcado en $0.
+       */
       toggleProductActive: (id) => {
+        const product = get().getProduct(id);
+        if (!product) return false;
+        if (!product.active && product.price <= 0) return false;
+
         set((state) => ({
-          products: state.products.map((product) =>
-            product.id === id
-              ? {
-                  ...product,
-                  active: !product.active,
-                  updatedAt: new Date().toISOString()
-                }
-              : product
+          products: state.products.map((item) =>
+            item.id === id
+              ? { ...item, active: !item.active, updatedAt: new Date().toISOString() }
+              : item
           ),
         }));
+        return true;
       },
 
       updateProductImages: (id, images) => {
@@ -138,6 +145,13 @@ export const useAdminProductsStore = create<AdminProductsState>()(
     {
       name: 'admin-products-storage',
       storage: createJSONStorage(() => secureStorage),
+      /**
+       * Subir la versión descarta el catálogo guardado en el navegador y
+       * recarga el de `data/products.ts`. Hay que subirla cada vez que el
+       * catálogo base cambie de fondo (v3: + catálogo fúnebre).
+       */
+      version: 3,
+      migrate: () => ({ products: initialAdminProducts }),
     }
   )
 );

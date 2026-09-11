@@ -3,48 +3,68 @@ import { img } from './images';
 
 export const CATEGORIES: Category[] = [
   {
-    slug: 'flores-frescas',
-    name: 'Flores frescas',
-    tagline: 'Cortadas esta mañana',
+    slug: 'arreglos-caja',
+    name: 'Arreglos en caja',
+    tagline: 'Listos para regalar',
     description:
-      'Composiciones de temporada armadas el mismo día con flor de la sabana. Duran entre siete y diez días con los cuidados adecuados.',
-    image: img('categoria-flores-frescas'),
-    cta: 'Ver flores frescas',
+      'Cajas redondas, de corazón y rectangulares armadas con rosas, girasoles y flor tropical. Varias incluyen globo, peluche o chocolates.',
+    image: img('categoria-arreglos-caja'),
+    cta: 'Ver arreglos en caja',
   },
   {
-    slug: 'flores-eternas',
-    name: 'Flores eternas',
-    tagline: 'Duran hasta tres años',
+    slug: 'arreglos-base',
+    name: 'Arreglos en base',
+    tagline: 'Para dejar puestos',
     description:
-      'Rosas y follaje preservados de forma natural, sin agua y sin mantenimiento. Viajan a cualquier rincón de Colombia.',
-    image: img('categoria-flores-eternas'),
-    cta: 'Ver flores eternas',
+      'Composiciones montadas en base de vidrio o taza, pensadas para que lleguen listas y se queden en la mesa sin nada más que agua.',
+    image: img('categoria-arreglos-base'),
+    cta: 'Ver arreglos en base',
   },
   {
-    slug: 'amor-y-amistad',
-    name: 'Amor y Amistad',
-    tagline: 'Celebra el amor',
+    slug: 'ramos-clasicos',
+    name: 'Ramos clásicos',
+    tagline: 'De una rosa a cuatro docenas',
     description:
-      'Arreglos especiales para celebrar el amor y la amistad. Rosas rojas, tropicales vibrantes y detalles románticos que expresan tus sentimientos.',
-    image: img('categoria-amor-y-amistad'),
-    cta: 'Ver amor y amistad',
+      'Rosas y girasoles envueltos en papel coreano, desde la unidad hasta el ramo de 48. El clásico que nunca falla, en el tamaño que necesites.',
+    image: img('categoria-ramos-clasicos'),
+    cta: 'Ver ramos clásicos',
   },
   {
-    slug: 'hogar',
-    name: 'Hogar',
-    tagline: 'Objetos que acompañan',
+    slug: 'ramos-premium',
+    name: 'Ramos premium',
+    tagline: 'Cuando es una ocasión grande',
     description:
-      'Floreros de cerámica, velas de cera vegetal y piezas de mesa hechas por talleres colombianos.',
-    image: img('categoria-hogar'),
-    cta: 'Ver objetos',
+      'Nuestras piezas más elaboradas: espejo conmemorativo rodeado de rosas y ramos en forma de corazón. Para aniversarios y celebraciones que se recuerdan.',
+    image: img('categoria-ramos-premium'),
+    cta: 'Ver ramos premium',
+  },
+  {
+    slug: 'ramos-tropicales',
+    name: 'Ramos tropicales',
+    tagline: 'Color de la costa',
+    description:
+      'Mezclas de gerberas, lirios, hortensias y astromelias en toda la paleta. Para quien prefiere el color antes que la rosa roja.',
+    image: img('categoria-ramos-tropicales'),
+    cta: 'Ver ramos tropicales',
+  },
+  {
+    slug: 'arreglos-funebres',
+    name: 'Arreglos fúnebres',
+    tagline: 'Acompañamos el adiós',
+    description:
+      'Coronas, corazones, cruces y arreglos sobre cajón para velaciones y exequias. Armamos y entregamos en sala el mismo día. Escríbenos y te cotizamos según el tamaño y la flor disponible.',
+    image: img('categoria-arreglos-funebres'),
+    cta: 'Ver arreglos fúnebres',
   },
 ];
 
 export const CATEGORY_LABELS: Record<CategorySlug, string> = {
-  'flores-frescas': 'Flores frescas',
-  'flores-eternas': 'Flores eternas',
-  'amor-y-amistad': 'Amor y Amistad',
-  hogar: 'Hogar',
+  'arreglos-caja': 'Arreglos en caja',
+  'arreglos-base': 'Arreglos en base',
+  'ramos-clasicos': 'Ramos clásicos',
+  'ramos-premium': 'Ramos premium',
+  'ramos-tropicales': 'Ramos tropicales',
+  'arreglos-funebres': 'Arreglos fúnebres',
 };
 
 export function getCategory(slug: string): Category | undefined {
