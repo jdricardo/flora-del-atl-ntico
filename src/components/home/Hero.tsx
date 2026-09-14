@@ -56,9 +56,9 @@ export function Hero() {
             <div className="grain relative overflow-hidden rounded-2xl bg-cream">
               <img
                 src={img('hero-principal')}
-                alt="Composición floral de la colección Atelier sobre fondo crema"
-                width={1800}
-                height={1100}
+                alt="Tulipanes de colores envueltos en papel kraft"
+                width={853}
+                height={1067}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
@@ -69,17 +69,17 @@ export function Hero() {
             <div className="animate-float absolute -bottom-6 -left-4 hidden w-40 overflow-hidden rounded-xl bg-ivory p-2 shadow-lift sm:block lg:-left-10 lg:w-48">
               <img
                 src={img('hero-secundario')}
-                alt="Detalle de rosas en tono empolvado"
-                width={900}
-                height={1200}
+                alt="Ramo de 48 rosas rojas con alfileres de diamante y gypsophila"
+                width={480}
+                height={600}
                 loading="lazy"
                 decoding="async"
                 className="aspect-4/5 w-full rounded-lg object-cover"
               />
               <p className="px-1 pt-2 pb-1 text-[0.62rem] leading-snug tracking-[0.1em] text-ink-muted uppercase">
-                Docena de rosas
+                Ramo de 48 rosas
                 <br />
-                nuestro clásico
+                nuestro premium
               </p>
             </div>
           </div>
