@@ -67,8 +67,8 @@ export function Footer() {
           <div className="flex flex-col gap-8">
             <Logo />
             <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
-              Taller de diseño floral en Barranquilla desde {SITE.founded}. Trabajamos con cultivos de la Costa Caribe y
-              talleres artesanales colombianos.
+              Distribuidora y floristería en Malambo desde {SITE.founded}. Trabajamos con cultivos de la Sabana de
+              Bogotá y Antioquia, y entregamos en todo el Atlántico.
             </p>
             <Newsletter />
           </div>

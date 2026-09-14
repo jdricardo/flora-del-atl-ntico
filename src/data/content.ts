@@ -18,8 +18,8 @@ export const BENEFITS: Benefit[] = [
   {
     id: 'seleccion',
     icon: 'sparkles',
-    title: 'Flores frescas del Caribe',
-    description: 'Como distribuidores, garantizamos flores frescas y variedades tropicales de la mejor calidad.',
+    title: 'Compra directa al cultivo',
+    description: 'Como distribuidores compramos directo al cultivo: la flor llega fresca y sin intermediarios.',
   },
   {
     id: 'artesanal',
@@ -124,7 +124,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'faq-1',
     question: '¿Hasta qué hora puedo pedir para que llegue hoy?',
     answer:
-      'Hasta las 12:00 p.m. en Malambo, Soledad, Barranquilla y zona metropolitana, de lunes a sábado. Después de esa hora el pedido se programa para el día siguiente. Los domingos trabajamos solo con entregas programadas.',
+      'Hasta las 12:00 m., de lunes a sábado. Después de esa hora el pedido se programa para el día siguiente. Atendemos de 8:00 a.m. a 6:00 p.m.',
   },
   {
     id: 'faq-2',

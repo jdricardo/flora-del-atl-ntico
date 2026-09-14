@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
 import { CITIES, getCity } from '@/data/cities';
-import { DELIVERY_SLOTS } from '@/data/site';
+import { DELIVERY_SLOTS, SITE } from '@/data/site';
 import { earliestDeliveryDate, formatLongDate, latestDeliveryDate } from '@/lib/dates';
 import { createOrderId } from '@/lib/id';
 import { orderMessageUrl } from '@/lib/whatsapp';
@@ -348,7 +348,7 @@ export function CheckoutPage() {
             id="dedicatoria"
             step={4}
             title="Dedicatoria"
-            description="La transcribimos a mano en una tarjeta de algodón, sin costo."
+            description="La transcribimos a mano en la tarjeta que acompaña el arreglo, sin costo."
           >
             <Field
               id="dedication"
@@ -380,8 +380,8 @@ export function CheckoutPage() {
                 error={showError('acceptTerms')}
                 label={
                   <span className="text-xs leading-relaxed text-ink-muted">
-                    Acepto los términos y condiciones y la política de tratamiento de datos personales de Flora
-                    Magdalena.
+                    Acepto los términos y condiciones y la política de tratamiento de datos personales de{' '}
+                    {SITE.name}.
                   </span>
                 }
               />

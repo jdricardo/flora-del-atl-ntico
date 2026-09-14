@@ -47,10 +47,10 @@ export const SHIPPING = {
 /** Costo de la tarjeta manuscrita opcional. */
 export const GIFT_CARD_PRICE = 12_000;
 
+/** Las franjas no pueden exceder el horario de atención del local. */
 export const DELIVERY_SLOTS: DeliverySlot[] = [
   { id: 'manana', label: 'Mañana', range: '8:00 a.m. – 12:00 m.' },
-  { id: 'tarde', label: 'Tarde', range: '12:00 m. – 5:00 p.m.' },
-  { id: 'noche', label: 'Noche', range: '5:00 p.m. – 8:00 p.m.' },
+  { id: 'tarde', label: 'Tarde', range: '12:00 m. – 6:00 p.m.' },
 ];
 
 /**

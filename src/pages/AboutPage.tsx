@@ -19,7 +19,7 @@ const VALUES = [
     icon: 'sprout',
     title: 'Compra directa al cultivo',
     description:
-      'Trabajamos con fincas de la región del Atlántico y la Costa Caribe, y pagamos a 15 días. Sin intermediarios en el medio, la flor llega más fresca y el productor cobra mejor.',
+      'Compramos directo a los cultivos de la Sabana de Bogotá y Antioquia, donde se produce la flor del país. Sin intermediarios en el medio, la flor llega más fresca y el productor cobra mejor.',
   },
   {
     icon: 'award',

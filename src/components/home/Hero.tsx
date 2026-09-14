@@ -77,9 +77,9 @@ export function Hero() {
                 className="aspect-4/5 w-full rounded-lg object-cover"
               />
               <p className="px-1 pt-2 pb-1 text-[0.62rem] leading-snug tracking-[0.1em] text-ink-muted uppercase">
-                Ramo Magdalena
+                Docena de rosas
                 <br />
-                nuestra firma
+                nuestro clásico
               </p>
             </div>
           </div>
