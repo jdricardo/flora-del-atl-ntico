@@ -2,6 +2,7 @@ import { CircleCheck, Mail, MapPin, MessageCircle, PenLine } from 'lucide-react'
 import { cityName } from '@/data/cities';
 import { DELIVERY_SLOTS, PAYMENT_METHODS, whatsappLink } from '@/data/site';
 import { formatLongDate } from '@/lib/dates';
+import { orderMessageUrl } from '@/lib/whatsapp';
 import { useSeo } from '@/hooks/useSeo';
 import { useOrderStore } from '@/store/useOrderStore';
 import { Container } from '@/components/ui/Container';
@@ -38,13 +39,24 @@ export function OrderConfirmedPage() {
           <div className="flex flex-col gap-4">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-olive-100 px-3.5 py-1.5 text-[0.68rem] font-medium tracking-[0.12em] text-olive-700 uppercase">
               <CircleCheck className="size-3.5" aria-hidden="true" />
-              Pedido confirmado
+              Pedido listo para enviar
             </span>
-            <h1 className="text-4xl sm:text-5xl">Gracias, {order.customer.firstName}</h1>
+            <h1 className="text-4xl sm:text-5xl">Ya casi, {order.customer.firstName}</h1>
             <p className="max-w-xl text-[0.95rem] leading-relaxed text-ink-muted">
-              Tu pedido <strong className="font-medium text-ink">{order.id}</strong> quedó registrado. Te enviamos la
-              confirmación a {order.customer.email} y te escribimos por WhatsApp cuando salga del taller.
+              Abrimos WhatsApp con tu pedido <strong className="font-medium text-ink">{order.id}</strong> escrito.
+              <strong className="font-medium text-ink"> Falta que le des enviar</strong> para que nos llegue: ahí te
+              confirmamos disponibilidad, te pasamos los datos del pago y agendamos la entrega.
             </p>
+
+            <a
+              href={orderMessageUrl({ ...order, orderId: order.id })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-ivory transition-opacity hover:opacity-90"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+              Volver a abrir WhatsApp
+            </a>
           </div>
 
           <dl className="grid gap-6 rounded-2xl border border-line p-6 sm:grid-cols-2">
@@ -77,7 +89,7 @@ export function OrderConfirmedPage() {
               <dd className="text-sm">
                 {payment?.name ?? 'Por confirmar'}
                 <br />
-                <span className="text-ink-muted">Demostración · sin cargo real</span>
+                <span className="text-ink-muted">Se coordina por WhatsApp</span>
               </dd>
             </div>
 
@@ -112,9 +124,10 @@ export function OrderConfirmedPage() {
             </Button>
           </div>
 
-          <p className="flex items-center gap-2 text-xs text-ink-muted">
-            <Mail className="size-3.5" aria-hidden="true" />
-            En la versión con backend, aquí se dispararía el correo transaccional y el registro en el ERP.
+          <p className="flex items-start gap-2 text-xs leading-relaxed text-ink-muted">
+            <Mail className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+            Guarda el número de pedido: te sirve para hacer seguimiento por WhatsApp. El pedido queda agendado cuando
+            confirmemos disponibilidad contigo.
           </p>
         </div>
 

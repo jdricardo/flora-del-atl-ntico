@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Lock } from 'lucide-react';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
 import { CITIES, getCity } from '@/data/cities';
 import { DELIVERY_SLOTS } from '@/data/site';
 import { earliestDeliveryDate, formatLongDate, latestDeliveryDate } from '@/lib/dates';
 import { createOrderId } from '@/lib/id';
+import { orderMessageUrl } from '@/lib/whatsapp';
 import {
   MAX_DEDICATION_LENGTH,
   createEmptyCheckoutValues,
@@ -89,7 +90,6 @@ export function CheckoutPage() {
 
     setIsSubmitting(true);
 
-    // Punto de integración: POST /api/orders + creación de la intención de pago.
     const order: Order = {
       id: createOrderId(),
       createdAt: new Date().toISOString(),
@@ -116,14 +116,29 @@ export function CheckoutPage() {
       totals,
     };
 
-    // Latencia simulada para que el estado de carga sea visible.
-    setTimeout(() => {
-      hasPlacedOrder.current = true;
-      setLastOrder(order);
-      navigate('/pedido-confirmado', { replace: true });
-      clearCart();
+    /*
+     * El pedido se cierra por WhatsApp. `window.open` tiene que salir de forma
+     * síncrona desde el submit: si se difiere (un setTimeout, un await), el
+     * navegador ya no lo asocia al clic del usuario y lo bloquea como popup.
+     */
+    const url = orderMessageUrl({ ...order, orderId: order.id });
+    const ventana = window.open(url, '_blank', 'noopener,noreferrer');
+
+    if (!ventana) {
       setIsSubmitting(false);
-    }, 900);
+      notify({
+        variant: 'error',
+        title: 'Tu navegador bloqueó la ventana de WhatsApp',
+        description: 'Permite las ventanas emergentes para este sitio y vuelve a confirmar.',
+      });
+      return;
+    }
+
+    hasPlacedOrder.current = true;
+    setLastOrder(order);
+    navigate('/pedido-confirmado', { replace: true });
+    clearCart();
+    setIsSubmitting(false);
   };
 
   if (items.length === 0) return null;
@@ -355,7 +370,7 @@ export function CheckoutPage() {
           </CheckoutSection>
 
           <CheckoutSection id="pago" step={5} title="Pago">
-            <PaymentMethods values={values} showError={showError} onChange={change} onBlur={blur} />
+            <PaymentMethods values={values} onChange={change} />
 
             <div className="mt-6 flex flex-col gap-4">
               <Checkbox
@@ -372,12 +387,12 @@ export function CheckoutPage() {
               />
 
               <Button type="submit" size="lg" fullWidth loading={isSubmitting}>
-                {isSubmitting ? 'Confirmando pedido…' : 'Confirmar pedido'}
+                {isSubmitting ? 'Abriendo WhatsApp…' : 'Enviar pedido por WhatsApp'}
               </Button>
 
-              <p className="flex items-center justify-center gap-2 text-xs text-ink-muted">
-                <Lock className="size-3.5" aria-hidden="true" />
-                Tienda de demostración: no se procesa ningún pago real.
+              <p className="flex items-center justify-center gap-2 text-center text-xs text-ink-muted">
+                <MessageCircle className="size-3.5 shrink-0" aria-hidden="true" />
+                Se abre WhatsApp con tu pedido listo para enviar. No se cobra nada desde el sitio.
               </p>
             </div>
           </CheckoutSection>

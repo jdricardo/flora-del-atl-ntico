@@ -93,11 +93,11 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't4',
     name: 'Andrés Villalba',
-    city: 'Santa Marta',
+    city: 'Sabanalarga',
     occasion: 'Propuesta de matrimonio',
     rating: 5,
     quote:
-      'Las rosas llegaron perfectas a Santa Marta. Se coordinaron conmigo para la entrega exacta y todo salió como lo planeé. Eternamente agradecido.',
+      'Las rosas llegaron perfectas hasta Sabanalarga. Se coordinaron conmigo para la entrega exacta y todo salió como lo planeé. Eternamente agradecido.',
   },
   {
     id: 't5',
@@ -111,7 +111,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't6',
     name: 'Jorge Insignares',
-    city: 'Cartagena',
+    city: 'Soledad',
     occasion: 'Condolencias',
     rating: 5,
     quote:
@@ -130,7 +130,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'faq-2',
     question: '¿A qué ciudades envían?',
     answer:
-      'Enviamos flores frescas a Barranquilla, zona metropolitana y oriental del Atlántico (Malambo, Soledad, Galapa, Puerto Colombia, Sabanalarga, Santo Tomás, Palmar de Varela). También cubrimos Cartagena, Santa Marta, Sincelejo, Valledupar, Montería y otras ciudades del Caribe colombiano.',
+      'Entregamos únicamente en el departamento del Atlántico: Malambo, Soledad, Barranquilla, Puerto Colombia, Galapa, Sabanalarga, Santo Tomás, Palmar de Varela y el resto de municipios del departamento.',
   },
   {
     id: 'faq-3',
@@ -142,7 +142,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'faq-4',
     question: '¿Cuánto cuesta el envío?',
     answer:
-      'El costo de envío varía según la ciudad: desde $8.000 en Malambo hasta $40.000 en ciudades más alejadas del Caribe. El costo exacto lo ves en el checkout al seleccionar tu ciudad.',
+      'Malambo $5.000, resto del Atlántico $10.000, Soledad $15.000, Barranquilla $20.000 y Puerto Colombia $30.000. El envío es gratis en compras desde $250.000, y el costo exacto lo ves en el checkout al elegir tu municipio.',
   },
   {
     id: 'faq-5',

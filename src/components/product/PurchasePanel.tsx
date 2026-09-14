@@ -1,9 +1,10 @@
 import { useId, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CalendarDays, MapPin, PenLine, TriangleAlert } from 'lucide-react';
+import { CalendarDays, MapPin, MessageCircle, PenLine } from 'lucide-react';
 import { CITIES, getCity } from '@/data/cities';
 import { GIFT_CARD_PRICE } from '@/data/site';
 import { earliestDeliveryDate, formatLongDate, latestDeliveryDate } from '@/lib/dates';
+import { productEnquiryUrl } from '@/lib/whatsapp';
 import { formatCOP } from '@/lib/format';
 import { MAX_DEDICATION_LENGTH } from '@/lib/validation';
 import { useAddToCart } from '@/hooks/useAddToCart';
@@ -33,11 +34,6 @@ export function PurchasePanel({ product }: { product: Product }) {
   const city = getCity(cityId);
   const available = product.stock > 0;
   const maxUnits = Math.max(1, Math.min(20, product.stock));
-
-  // Fuera de la zona de cobertura la flor fresca no viaja sola: se coordina.
-  const coverageWarning = city?.preservedOnly
-    ? `A ${city.name} no llegamos con entrega directa. Escríbenos por WhatsApp antes de hacer el pedido para coordinar el envío.`
-    : null;
 
   const options = {
     deliveryDate,
@@ -111,16 +107,6 @@ export function PurchasePanel({ product }: { product: Product }) {
         </Field>
       </div>
 
-      {coverageWarning && (
-        <p
-          role="status"
-          className="flex items-start gap-2.5 rounded-lg border border-gold-soft bg-gold/10 px-4 py-3 text-xs leading-relaxed text-ink"
-        >
-          <TriangleAlert className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-          {coverageWarning}
-        </p>
-      )}
-
       <Field
         id={`${baseId}-dedication`}
         label="Dedicatoria"
@@ -175,6 +161,17 @@ export function PurchasePanel({ product }: { product: Product }) {
         <Button variant="secondary" size="lg" fullWidth onClick={handleBuyNow} disabled={!available}>
           Comprar ahora
         </Button>
+
+        {/* Atajo para quien prefiere preguntar antes que llenar el checkout. */}
+        <a
+          href={productEnquiryUrl(product)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 text-sm text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+        >
+          <MessageCircle className="size-4" aria-hidden="true" />
+          Preguntar por WhatsApp
+        </a>
       </div>
     </div>
   );

@@ -1494,6 +1494,32 @@ const SEEDS: ProductSeed[] = [
     createdAt: '2026-09-01',
     salesCount: 0,
   },
+  {
+    id: 'r38',
+    name: 'Corazón de claveles con rosas',
+    category: 'ramos-tropicales',
+    collection: 'Ramos tropicales',
+    price: 160_000,
+    shortDescription: 'Corazón de claveles fucsia con tres rosas rosadas.',
+    description:
+      'Un corazón armado en claveles fucsia, acompañado de tres rosas rosadas, solidaster amarillo y manzanilla blanca. Va envuelto en papel coreano blanco y rematado con lazo. El corazón se arma flor por flor, así que el ramo se ve distinto según cómo abran los claveles.',
+    features: [
+      'Corazón armado en claveles fucsia',
+      '3 rosas rosadas',
+      'Solidaster y manzanilla',
+      'Papel coreano con lazo',
+      'Incluye tarjeta conmemorativa',
+      'El color del papel puede variar según disponibilidad',
+    ],
+    badges: ['nuevo'],
+    stock: 50,
+    sameDayDelivery: true,
+    rating: 0,
+    reviewCount: 0,
+    tags: ['corazon', 'claveles', 'rosas', 'fucsia', 'manzanilla', 'solidaster', 'romantico'],
+    createdAt: '2026-09-14',
+    salesCount: 0,
+  },
 
   /* ---------- Arreglos fúnebres ---------- */
   {
@@ -1501,8 +1527,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con tres rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 160_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de tres rosas y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de tres rosas y adorno.',
@@ -1525,8 +1550,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con seis rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 160_000,
     shortDescription: 'Corazón pequeño en margarita, pom pom o fuye, con aplique de seis rosas y adorno',
     description:
       'Corazón pequeño en margarita, pom pom o fuye, con aplique de seis rosas y adorno.',
@@ -1549,8 +1573,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con tres rosas y mini rosa',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 160_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de tres rosas, mini rosa y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de tres rosas, mini rosa y adorno.',
@@ -1573,8 +1596,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con ocho rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de ocho rosas, mini rosa y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de ocho rosas, mini rosa y adorno.',
@@ -1597,8 +1619,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con diez rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de diez rosas, mini rosa y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de diez rosas, mini rosa y adorno.',
@@ -1621,8 +1642,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con doce rosas y lazo',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de doce rosas, un lazo y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de doce rosas, un lazo y adorno.',
@@ -1645,8 +1665,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con quince rosas y doble aplique',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas y un segundo aplique de una unidad, más adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas y un segundo aplique de una unidad, más adorno.',
@@ -1669,8 +1688,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo bicolor con ocho rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye bicolor, con aplique de ocho rosas y un segundo aplique de una unidad, más adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye bicolor, con aplique de ocho rosas y un segundo aplique de una unidad, más adorno.',
@@ -1693,8 +1711,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con ocho rosas y doble aplique',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de ocho rosas y un segundo aplique de una unidad, más adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de ocho rosas y un segundo aplique de una unidad, más adorno.',
@@ -1717,8 +1734,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con quince rosas bicolor',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas bicolor y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas bicolor y adorno.',
@@ -1741,8 +1757,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón sencillo con quince rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón sencillo',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas y adorno',
     description:
       'Corazón pequeño en margaritas, pom pom o fuye, con aplique de quince rosas y adorno.',
@@ -1765,8 +1780,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón grande con doce rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón grande',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón grande en margaritas con aplique de doce rosas y adorno',
     description:
       'Corazón grande en margaritas con aplique de doce rosas y adorno.',
@@ -1789,8 +1803,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón grande en clavel con ocho rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón grande',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón grande en clavel con aplique de ocho rosas, mini rosa, lirio y adorno',
     description:
       'Corazón grande en clavel con aplique de ocho rosas, mini rosa, lirio y adorno.',
@@ -1813,8 +1826,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón grande con diez rosas y astromelia',
     category: 'arreglos-funebres',
     collection: 'Corazón grande',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 200_000,
     shortDescription: 'Corazón grande en margarita, pom pom o fuye, con aplique de diez rosas, mini rosa, astromelia y adorno',
     description:
       'Corazón grande en margarita, pom pom o fuye, con aplique de diez rosas, mini rosa, astromelia y adorno.',
@@ -1837,8 +1849,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón grande con diez rosas y lirios',
     category: 'arreglos-funebres',
     collection: 'Corazón grande',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 220_000,
     shortDescription: 'Corazón grande en margaritas, pom pom o fuye, con aplique de diez rosas y cinco varas de lirios con adorno',
     description:
       'Corazón grande en margaritas, pom pom o fuye, con aplique de diez rosas y cinco varas de lirios con adorno.',
@@ -1861,8 +1872,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón grande hueco con doce rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón grande',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 220_000,
     shortDescription: 'Corazón grande hueco en margaritas, pom pom o fuye, con aplique de doce rosas y adorno',
     description:
       'Corazón grande hueco en margaritas, pom pom o fuye, con aplique de doce rosas y adorno.',
@@ -1885,8 +1895,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril con diez rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corazón grande en margaritas, pom pom o fuye, con aplique de diez rosas y adorno, montado sobre atril',
     description:
       'Corazón grande en margaritas, pom pom o fuye, con aplique de diez rosas y adorno, montado sobre atril.',
@@ -1909,8 +1918,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril con quince rosas',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corazón grande en margaritas con aplique de quince rosas y adorno, montado sobre atril',
     description:
       'Corazón grande en margaritas con aplique de quince rosas y adorno, montado sobre atril.',
@@ -1933,8 +1941,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril con aplique cruzado',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corazón grande en clavel con aplique cruzado de rosas, lazo y adorno, montado sobre atril',
     description:
       'Corazón grande en clavel con aplique cruzado de rosas, lazo y adorno, montado sobre atril.',
@@ -1957,8 +1964,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril hueco con lirios y mini rosa',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corazón grande hueco en clavel con aplique en lirios y mini rosa con adorno, montado sobre atril',
     description:
       'Corazón grande hueco en clavel con aplique en lirios y mini rosa con adorno, montado sobre atril.',
@@ -1981,8 +1987,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril hueco con lirios y rosa',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corazón grande hueco en clavel con aplique en lirios y rosa con adorno, montado sobre atril',
     description:
       'Corazón grande hueco en clavel con aplique en lirios y rosa con adorno, montado sobre atril.',
@@ -2005,8 +2010,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corazón en atril hueco con doble aplique',
     category: 'arreglos-funebres',
     collection: 'Corazón en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corazón grande hueco en clavel con doble aplique en lirios y rosa con adorno, montado sobre atril',
     description:
       'Corazón grande hueco en clavel con doble aplique en lirios y rosa con adorno, montado sobre atril.',
@@ -2029,8 +2033,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona redonda con doce rosas y lirios',
     category: 'arreglos-funebres',
     collection: 'Corona redonda',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 180_000,
     shortDescription: 'Corona redonda en margaritas, pom pom o fuye combinada con clavel, con aplique de doce rosas y dos varas de lirios con adorno',
     description:
       'Corona redonda en margaritas, pom pom o fuye combinada con clavel, con aplique de doce rosas y dos varas de lirios con adorno.',
@@ -2053,8 +2056,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona redonda con veinte rosas',
     category: 'arreglos-funebres',
     collection: 'Corona redonda',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 220_000,
     shortDescription: 'Corona redonda en margaritas, pom pom o fuye, con aplique de veinte rosas y dracena con adorno',
     description:
       'Corona redonda en margaritas, pom pom o fuye, con aplique de veinte rosas y dracena con adorno.',
@@ -2077,8 +2079,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona redonda con veinte rosas y dracena',
     category: 'arreglos-funebres',
     collection: 'Corona redonda',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 220_000,
     shortDescription: 'Corona redonda en margaritas, pom pom o fuye, con aplique de veinte rosas y dracena con adorno',
     description:
       'Corona redonda en margaritas, pom pom o fuye, con aplique de veinte rosas y dracena con adorno.',
@@ -2101,8 +2102,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril con veinte rosas y hortensias',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corona redonda en clavel con aplique de veinte rosas y hortensias, montada sobre atril',
     description:
       'Corona redonda en clavel con aplique de veinte rosas y hortensias, montada sobre atril.',
@@ -2125,8 +2125,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril con gladiolo y estrella de Belén',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corona redonda en margarita, pom pom o fuye, con aplique de rosas, gladiolo, lirio, hortensias y estrella de Belén, montada sobre atril',
     description:
       'Corona redonda en margarita, pom pom o fuye, con aplique de rosas, gladiolo, lirio, hortensias y estrella de Belén, montada sobre atril.',
@@ -2149,8 +2148,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con hortensias y lirio',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corona redonda hueca en margarita, hortensias, lirio, rosas y fuye, montada sobre atril',
     description:
       'Corona redonda hueca en margarita, hortensias, lirio, rosas y fuye, montada sobre atril.',
@@ -2173,8 +2171,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con lirios y gerberas',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corona redonda hueca en margarita o pom pom con lirios y gerberas, con aplique en rosas, lirios, mini rosa, gladiolo y gerbera, montada sobre atril',
     description:
       'Corona redonda hueca en margarita o pom pom con lirios y gerberas, con aplique en rosas, lirios, mini rosa, gladiolo y gerbera, montada sobre atril.',
@@ -2197,8 +2194,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con rosa y statice',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Corona redonda hueca en pom pom y margarita con aplique de rosa y statice, montada sobre atril',
     description:
       'Corona redonda hueca en pom pom y margarita con aplique de rosa y statice, montada sobre atril.',
@@ -2221,8 +2217,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con rosa y gerbera',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 320_000,
     shortDescription: 'Corona redonda hueca en pom pom, margarita o fuye, con aplique de rosa y gerbera, montada sobre atril',
     description:
       'Corona redonda hueca en pom pom, margarita o fuye, con aplique de rosa y gerbera, montada sobre atril.',
@@ -2245,8 +2240,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con treinta y seis rosas',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corona redonda hueca en clavel con aplique de treinta y seis rosas, montada sobre atril',
     description:
       'Corona redonda hueca en clavel con aplique de treinta y seis rosas, montada sobre atril.',
@@ -2269,8 +2263,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con lirios y rosa blanca',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 350_000,
     shortDescription: 'Corona redonda hueca en fuye con aplique en lirios, rosa blanca y lazo, montada sobre atril',
     description:
       'Corona redonda hueca en fuye con aplique en lirios, rosa blanca y lazo, montada sobre atril.',
@@ -2293,8 +2286,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con mini rosas y hortensias',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 350_000,
     shortDescription: 'Corona redonda hueca en rosa y pom pom, con aplique en rosas, mini rosas y hortensias, montada sobre atril',
     description:
       'Corona redonda hueca en rosa y pom pom, con aplique en rosas, mini rosas y hortensias, montada sobre atril.',
@@ -2317,8 +2309,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Corona en atril hueca con lirios y rosas',
     category: 'arreglos-funebres',
     collection: 'Corona en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Corona redonda hueca en rosa y clavel, con aplique en lirios y rosas, montada sobre atril',
     description:
       'Corona redonda hueca en rosa y clavel, con aplique en lirios y rosas, montada sobre atril.',
@@ -2341,8 +2332,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Cruz en atril con doce rosas',
     category: 'arreglos-funebres',
     collection: 'Cruz en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Cruz en pom pom o fuye y rosa, con aplique de doce rosas, montada sobre atril',
     description:
       'Cruz en pom pom o fuye y rosa, con aplique de doce rosas, montada sobre atril.',
@@ -2365,8 +2355,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Cruz en atril con rosas en dos colores',
     category: 'arreglos-funebres',
     collection: 'Cruz en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Cruz en fuye con aplique de rosas en dos colores, lirios y un lazo, montada sobre atril',
     description:
       'Cruz en fuye con aplique de rosas en dos colores, lirios y un lazo, montada sobre atril.',
@@ -2389,8 +2378,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Cruz en atril con rosas y lirios',
     category: 'arreglos-funebres',
     collection: 'Cruz en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Cruz en fuye con aplique de rosas y lirios, montada sobre atril',
     description:
       'Cruz en fuye con aplique de rosas y lirios, montada sobre atril.',
@@ -2413,8 +2401,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Cruz en atril en clavel con doce rosas',
     category: 'arreglos-funebres',
     collection: 'Cruz en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 280_000,
     shortDescription: 'Cruz en clavel con aplique de doce rosas, montada sobre atril',
     description:
       'Cruz en clavel con aplique de doce rosas, montada sobre atril.',
@@ -2437,8 +2424,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sudario con mini rosas y hortensias',
     category: 'arreglos-funebres',
     collection: 'Sudario en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 320_000,
     shortDescription: 'Sudario en mini rosas, hortensias y lirios, montado sobre atril',
     description:
       'Sudario en mini rosas, hortensias y lirios, montado sobre atril.',
@@ -2461,8 +2447,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sudario con rosas y clavel',
     category: 'arreglos-funebres',
     collection: 'Sudario en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 320_000,
     shortDescription: 'Sudario en rosas, mini rosas y clavel, montado sobre atril',
     description:
       'Sudario en rosas, mini rosas y clavel, montado sobre atril.',
@@ -2485,8 +2470,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sudario con rosa y lirios',
     category: 'arreglos-funebres',
     collection: 'Sudario en atril',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 350_000,
     shortDescription: 'Sudario en rosa, fuye y lirios, montado sobre atril',
     description:
       'Sudario en rosa, fuye y lirios, montado sobre atril.',
@@ -2509,8 +2493,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas y lirios',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en rosas con lirios, decorado',
     description:
       'Arreglo sobre cajón en rosas con lirios, decorado.',
@@ -2533,8 +2516,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas, clavel y mini rosa',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en rosas, clavel y mini rosa, decorado',
     description:
       'Arreglo sobre cajón en rosas, clavel y mini rosa, decorado.',
@@ -2557,8 +2539,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas, hortensias y lirios',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en rosas, hortensias y lirios, decorado',
     description:
       'Arreglo sobre cajón en rosas, hortensias y lirios, decorado.',
@@ -2581,8 +2562,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas con hortensias',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 280_000,
     shortDescription: 'Arreglo sobre cajón en rosas con hortensias, decorado',
     description:
       'Arreglo sobre cajón en rosas con hortensias, decorado.',
@@ -2605,8 +2585,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas y clavel bicolor',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 250_000,
     shortDescription: 'Arreglo sobre cajón en rosas y clavel bicolor, decorado',
     description:
       'Arreglo sobre cajón en rosas y clavel bicolor, decorado.',
@@ -2629,8 +2608,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en lirios',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en lirios, decorado',
     description:
       'Arreglo sobre cajón en lirios, decorado.',
@@ -2653,8 +2631,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas bicolor',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en rosas bicolor, decorado',
     description:
       'Arreglo sobre cajón en rosas bicolor, decorado.',
@@ -2677,8 +2654,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Sobre cajón en rosas y hortensias',
     category: 'arreglos-funebres',
     collection: 'Sobre cajón',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 300_000,
     shortDescription: 'Arreglo sobre cajón en rosas y hortensias, decorado',
     description:
       'Arreglo sobre cajón en rosas y hortensias, decorado.',
@@ -2701,8 +2677,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Lateral de mesa en rosas y lirios',
     category: 'arreglos-funebres',
     collection: 'Lateral de mesa',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 130_000,
     shortDescription: 'Arreglo lateral de mesa en rosas y lirios',
     description:
       'Arreglo lateral de mesa en rosas y lirios.',
@@ -2725,8 +2700,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Lateral de mesa en clavel bicolor',
     category: 'arreglos-funebres',
     collection: 'Lateral de mesa',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 130_000,
     shortDescription: 'Arreglo lateral de mesa en clavel bicolor',
     description:
       'Arreglo lateral de mesa en clavel bicolor.',
@@ -2749,8 +2723,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Lateral de mesa en rosas y cartucho',
     category: 'arreglos-funebres',
     collection: 'Lateral de mesa',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 160_000,
     shortDescription: 'Arreglo lateral de mesa en rosas y cartucho',
     description:
       'Arreglo lateral de mesa en rosas y cartucho.',
@@ -2773,8 +2746,7 @@ const SEEDS: ProductSeed[] = [
     name: 'Lateral de mesa en hortensias y lirios',
     category: 'arreglos-funebres',
     collection: 'Lateral de mesa',
-    /** El catálogo fúnebre no trae precios: se cotiza por WhatsApp. */
-    price: 0,
+    price: 170_000,
     shortDescription: 'Arreglo lateral de mesa en hortensias y lirios',
     description:
       'Arreglo lateral de mesa en hortensias y lirios.',

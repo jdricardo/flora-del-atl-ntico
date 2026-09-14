@@ -148,9 +148,9 @@ export const useAdminProductsStore = create<AdminProductsState>()(
       /**
        * Subir la versión descarta el catálogo guardado en el navegador y
        * recarga el de `data/products.ts`. Hay que subirla cada vez que el
-       * catálogo base cambie de fondo (v3: + catálogo fúnebre).
+       * catálogo base cambie de fondo (v6: catálogo fúnebre completo).
        */
-      version: 3,
+      version: 6,
       migrate: () => ({ products: initialAdminProducts }),
     }
   )

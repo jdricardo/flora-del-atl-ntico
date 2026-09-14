@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { DEFAULT_CITY_ID } from '@/data/cities';
+import { DEFAULT_CITY_ID, getCity } from '@/data/cities';
 import { getProductById } from '@/lib/catalog';
 import { createLineId } from '@/lib/id';
 import { calculateTotals } from '@/lib/shipping';
@@ -86,6 +86,10 @@ export const useCartStore = create<CartState>()(
        * Al rehidratar se vuelve a leer el producto del catálogo: así el
        * carrito guardado nunca muestra precios o stock desactualizados, y las
        * líneas de productos que ya no existen se descartan solas.
+       *
+       * La ciudad guardada se valida igual: al recortar la cobertura, un
+       * municipio que salió de la lista mostraría "Sin definir" y cobraría la
+       * tarifa por defecto, así que se descarta y vuelve a la predeterminada.
        */
       merge: (persisted, current) => {
         const saved = persisted as Partial<CartState> | undefined;
@@ -94,7 +98,8 @@ export const useCartStore = create<CartState>()(
           if (!product) return [];
           return [{ ...item, product, quantity: Math.min(item.quantity, product.stock || 1) }];
         });
-        return { ...current, ...saved, items };
+        const cityId = getCity(saved?.cityId) ? saved!.cityId! : null;
+        return { ...current, ...saved, items, cityId };
       },
     },
   ),

@@ -55,10 +55,7 @@ export function CityModal() {
                   />
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium">{city.name}</span>
-                    <span className="block truncate text-xs text-ink-muted">
-                      {city.department}
-                      {city.preservedOnly ? ' · Solo flor preservada y regalos' : ''}
-                    </span>
+                    <span className="block truncate text-xs text-ink-muted">{city.department}</span>
                   </span>
                 </span>
 

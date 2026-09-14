@@ -21,8 +21,11 @@ export const SITE = {
   },
   contact: {
     email: 'contacto@floradelatlantico.co',
-    phone: '+57 320 000 0000',
-    /** Solo dígitos: se usa para construir el enlace de WhatsApp. */
+    phone: '+57 300 2946740',
+    /**
+     * Número al que llegan los pedidos, en formato internacional y solo
+     * dígitos: así lo exige el enlace wa.me.
+     */
     whatsapp: '@jdricardo99',
   },
   social: {
@@ -37,8 +40,8 @@ export const SITE = {
 export const SHIPPING = {
   /** Compras iguales o superiores a este valor no pagan envío. */
   freeThreshold: 250_000,
-  /** Costo por defecto cuando no se ha elegido ciudad. */
-  defaultCost: 18_000,
+  /** Costo por defecto cuando no se ha elegido ciudad: tarifa del resto del Atlántico. */
+  defaultCost: 10_000,
 } as const;
 
 /** Costo de la tarjeta manuscrita opcional. */
@@ -50,29 +53,32 @@ export const DELIVERY_SLOTS: DeliverySlot[] = [
   { id: 'noche', label: 'Noche', range: '5:00 p.m. – 8:00 p.m.' },
 ];
 
+/**
+ * Medios de pago que recibe la floristería. El pedido se cierra por WhatsApp,
+ * así que aquí solo se declara la preferencia: los datos para transferir se
+ * acuerdan en el chat.
+ */
 export const PAYMENT_METHODS: PaymentMethod[] = [
-  {
-    id: 'tarjeta',
-    name: 'Tarjeta de crédito o débito',
-    description: 'Visa, Mastercard y American Express',
-    icon: 'credit-card',
-  },
-  { id: 'pse', name: 'PSE', description: 'Débito desde tu cuenta bancaria', icon: 'building-2' },
-  { id: 'nequi', name: 'Nequi', description: 'Aprueba el pago desde la app', icon: 'smartphone' },
   {
     id: 'transferencia',
     name: 'Transferencia bancaria',
-    description: 'Bancolombia · Davivienda · Nu',
+    description: 'Te pasamos los datos por WhatsApp. El pedido se agenda con el comprobante.',
     icon: 'landmark',
+  },
+  {
+    id: 'efectivo',
+    name: 'Efectivo',
+    description: 'Pagas contra entrega, al recibir el arreglo.',
+    icon: 'banknote',
   },
 ];
 
 /** Textos compartidos por todas las fichas de producto. */
 export const PRODUCT_POLICIES = {
   shipping: [
-    'Entrega el mismo día en Malambo, Soledad y Barranquilla para pedidos antes de las 12:00 p.m.',
-    'Cobertura completa en zona metropolitana y oriental del Atlántico: Malambo, Soledad, Barranquilla, Puerto Colombia, Sabanalarga, Galapa, Santo Tomás, Palmar de Varela y más.',
-    'Envíos a Cartagena, Santa Marta y otras ciudades de la costa Caribe en 1 a 3 días hábiles.',
+    'Entregamos únicamente en el departamento del Atlántico.',
+    'Entrega el mismo día en todo el departamento para pedidos antes de las 12:00 m.',
+    'Domicilio: Malambo $5.000 · Resto del Atlántico $10.000 · Soledad $15.000 · Barranquilla $20.000 · Puerto Colombia $30.000.',
     'Puedes elegir fecha y franja horaria de entrega en el checkout.',
   ],
   returns: [

@@ -10,6 +10,7 @@ export const MAIN_NAV: NavItem[] = [
   { label: 'Arreglos en caja', to: '/tienda?categoria=arreglos-caja' },
   { label: 'Arreglos en base', to: '/tienda?categoria=arreglos-base' },
   { label: 'Tropicales', to: '/tienda?categoria=ramos-tropicales' },
+  { label: 'Fúnebres', to: '/tienda?categoria=arreglos-funebres' },
   { label: 'Nosotros', to: '/nosotros' },
   { label: 'Contacto', to: '/contacto' },
 ];
@@ -24,6 +25,7 @@ export const FOOTER_NAV: { title: string; items: NavItem[] }[] = [
       { label: 'Ramos clásicos', to: '/tienda?categoria=ramos-clasicos' },
       { label: 'Ramos premium', to: '/tienda?categoria=ramos-premium' },
       { label: 'Ramos tropicales', to: '/tienda?categoria=ramos-tropicales' },
+      { label: 'Arreglos fúnebres', to: '/tienda?categoria=arreglos-funebres' },
     ],
   },
   {

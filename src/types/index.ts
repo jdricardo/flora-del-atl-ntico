@@ -120,8 +120,6 @@ export interface City {
   /** Cobertura de entrega el mismo día. */
   sameDay: boolean;
   shippingCost: number;
-  /** Solo recibe flores preservadas y regalos (no flor fresca). */
-  preservedOnly: boolean;
 }
 
 export interface DeliverySlot {
@@ -152,7 +150,7 @@ export interface DeliveryDetails {
   dedication: string;
 }
 
-export type PaymentMethodId = 'tarjeta' | 'pse' | 'nequi' | 'transferencia';
+export type PaymentMethodId = 'transferencia' | 'efectivo';
 
 export interface PaymentMethod {
   id: PaymentMethodId;
