@@ -5,6 +5,7 @@ import type { CategorySlug, ProductBadge } from '@/types';
 import { Button } from '@/components/ui/Button';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { CATEGORIES } from '@/data/categories';
+import { formatCOP } from '@/lib/format';
 import {
   sanitizeProductId,
   sanitizeText,
@@ -26,14 +27,19 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
     name: product?.name || '',
     category: product?.category || ('ramos-clasicos' as CategorySlug),
     collection: product?.collection || '',
-    price: product?.price || 0,
-    compareAtPrice: product?.compareAtPrice || 0,
+    /*
+     * Los importes se llevan como texto mientras se escriben. Guardarlos como
+     * número obliga a convertir en cada tecla, y un campo vacío se vuelve 0:
+     * el cero queda fijo delante y lo que se teclea se le pega detrás.
+     */
+    price: product?.price ? String(product.price) : '',
+    compareAtPrice: product?.compareAtPrice ? String(product.compareAtPrice) : '',
     shortDescription: product?.shortDescription || '',
     description: product?.description || '',
     features: product?.features?.join('\n') || '',
     care: product?.care?.join('\n') || '',
     badges: product?.badges || ([] as ProductBadge[]),
-    stock: product?.stock || 0,
+    stock: product?.stock ? String(product.stock) : '0',
     sameDayDelivery: product?.sameDayDelivery ?? true,
     rating: product?.rating || 4.5,
     reviewCount: product?.reviewCount || 0,
@@ -54,18 +60,21 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
       errors.id = 'ID inválido. Solo letras minúsculas, números y guiones.';
     }
 
-    // Validar precio
-    if (!validatePrice(formData.price)) {
-      errors.price = 'Precio inválido. Debe ser mayor a 0.';
+    const precio = Number(formData.price);
+    const precioComparacion = Number(formData.compareAtPrice);
+    const stock = Number(formData.stock);
+
+    if (!validatePrice(precio)) {
+      errors.price = 'Escribe el precio en pesos, sin puntos ni comas.';
     }
 
-    // Validar precio de comparación (si existe)
-    if (formData.compareAtPrice && !validatePrice(formData.compareAtPrice)) {
+    if (formData.compareAtPrice && !validatePrice(precioComparacion)) {
       errors.compareAtPrice = 'Precio de comparación inválido.';
+    } else if (formData.compareAtPrice && precioComparacion <= precio) {
+      errors.compareAtPrice = 'Debe ser mayor que el precio de venta.';
     }
 
-    // Validar stock
-    if (!validateStock(formData.stock)) {
+    if (!validateStock(stock)) {
       errors.stock = 'Stock inválido. Debe ser un número entero positivo.';
     }
 
@@ -82,6 +91,9 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
     const productData: Omit<AdminProduct, 'sku'> = {
       ...formData,
       id: sanitizedId!,
+      price: precio,
+      compareAtPrice: precioComparacion || undefined,
+      stock,
       name: sanitizeText(formData.name, 200),
       collection: sanitizeText(formData.collection, 100),
       shortDescription: sanitizeText(formData.shortDescription, 500),
@@ -203,21 +215,31 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
             <label className="mb-1.5 block text-sm font-medium text-ink">
               Precio *
             </label>
+            {/*
+              Va como texto con inputMode numérico: `type="number"` con un
+              `step` de miles hace que el navegador rechace importes redondos
+              como 160000, porque solo admite múltiplos del paso.
+            */}
             <input
-              type="number"
+              type="text"
+              inputMode="numeric"
               value={formData.price}
-              onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
+              onChange={(e) =>
+                setFormData({ ...formData, price: e.target.value.replace(/\D/g, '') })
+              }
               placeholder="185000"
-              min="1"
-              step="1000"
               className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:border-ink focus:outline-none ${
                 validationErrors.price ? 'border-red-500' : 'border-stone-200'
               }`}
               data-error={validationErrors.price ? 'true' : undefined}
               required
             />
-            {validationErrors.price && (
+            {validationErrors.price ? (
               <p className="mt-1 text-xs text-red-600">{validationErrors.price}</p>
+            ) : (
+              <p className="mt-1 text-xs text-ink-muted">
+                {formData.price ? formatCOP(Number(formData.price)) : 'Solo números, sin puntos'}
+              </p>
             )}
           </div>
           <div>
@@ -225,26 +247,40 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
               Precio comparación
             </label>
             <input
-              type="number"
-              value={formData.compareAtPrice || ''}
+              type="text"
+              inputMode="numeric"
+              value={formData.compareAtPrice}
               onChange={(e) =>
-                setFormData({ ...formData, compareAtPrice: Number(e.target.value) || 0 })
+                setFormData({ ...formData, compareAtPrice: e.target.value.replace(/\D/g, '') })
               }
               placeholder="220000"
-              className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-sm focus:border-ink focus:outline-none"
+              className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:border-ink focus:outline-none ${
+                validationErrors.compareAtPrice ? 'border-red-500' : 'border-stone-200'
+              }`}
+              data-error={validationErrors.compareAtPrice ? 'true' : undefined}
             />
-            <p className="mt-1 text-xs text-ink-muted">Para mostrar descuento</p>
+            {validationErrors.compareAtPrice ? (
+              <p className="mt-1 text-xs text-red-600">{validationErrors.compareAtPrice}</p>
+            ) : (
+              <p className="mt-1 text-xs text-ink-muted">
+                {formData.compareAtPrice
+                  ? `${formatCOP(Number(formData.compareAtPrice))} · tachado`
+                  : 'Para mostrar descuento'}
+              </p>
+            )}
           </div>
           <div>
             <label className="mb-1.5 block text-sm font-medium text-ink">
               Stock disponible *
             </label>
             <input
-              type="number"
+              type="text"
+              inputMode="numeric"
               value={formData.stock}
-              onChange={(e) => setFormData({ ...formData, stock: Number(e.target.value) })}
-              min="0"
-              step="1"
+              onChange={(e) =>
+                setFormData({ ...formData, stock: e.target.value.replace(/\D/g, '') })
+              }
+              placeholder="50"
               className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:border-ink focus:outline-none ${
                 validationErrors.stock ? 'border-red-500' : 'border-stone-200'
               }`}

@@ -34,7 +34,26 @@ export const secureStorage: StateStorage = {
       const encrypted = await encryptData(value);
       localStorage.setItem(name, 'enc:' + encrypted); // Prefijo para identificar datos encriptados
     } catch (error) {
+      /*
+       * Un fallo aquí deja el cambio solo en memoria: la pantalla lo muestra
+       * guardado y se pierde al recargar. Se avisa en pantalla porque nadie
+       * trabaja con la consola abierta.
+       */
+      const lleno =
+        error instanceof DOMException &&
+        (error.name === 'QuotaExceededError' || error.code === 22);
+
       console.error('Error guardando datos encriptados:', error);
+
+      if (typeof window !== 'undefined') {
+        window.alert(
+          lleno
+            ? 'No se pudo guardar: el almacenamiento del navegador está lleno. ' +
+                'Suele pasar por fotos muy pesadas cargadas desde el panel. ' +
+                'Elimina alguna y vuelve a intentarlo.'
+            : 'No se pudo guardar el cambio. Recarga la página y vuelve a intentarlo.',
+        );
+      }
       throw error;
     }
   },

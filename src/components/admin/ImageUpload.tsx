@@ -8,9 +8,48 @@ interface ImageUploadProps {
   index: number;
 }
 
+/** Lado mayor al que se reduce la foto antes de guardarla. */
+const LADO_MAXIMO = 1200;
+
+/**
+ * Reduce y recomprime la foto antes de convertirla a base64.
+ *
+ * El catálogo se guarda entero en el almacenamiento del navegador, que ronda
+ * los 5 MB: una foto de celular sin tocar ocupa 2,7 MB en base64 y un par de
+ * ellas bastan para llenarlo y que deje de guardarse. Así cada foto baja a
+ * unos 150 KB y además el sitio carga más rápido.
+ */
+function comprimirImagen(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const lector = new FileReader();
+    lector.onerror = () => reject(new Error('No se pudo leer el archivo'));
+    lector.onload = () => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('El archivo no es una imagen válida'));
+      img.onload = () => {
+        const escala = Math.min(1, LADO_MAXIMO / Math.max(img.width, img.height));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * escala);
+        canvas.height = Math.round(img.height * escala);
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error('El navegador no permitió procesar la imagen'));
+          return;
+        }
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      img.src = lector.result as string;
+    };
+    lector.readAsDataURL(file);
+  });
+}
+
 export function ImageUpload({ label, value, onChange, index }: ImageUploadProps) {
   const [preview, setPreview] = useState<string>(value || '');
   const [error, setError] = useState<string>('');
+  const [procesando, setProcesando] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,20 +68,19 @@ export function ImageUpload({ label, value, onChange, index }: ImageUploadProps)
       return;
     }
 
-    // Leer el archivo y convertirlo a base64
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const imageUrl = reader.result as string;
-      setPreview(imageUrl);
-      onChange(imageUrl);
-    };
-    reader.onerror = () => {
-      setError('Error al leer el archivo');
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    };
-    reader.readAsDataURL(file);
+    setProcesando(true);
+    comprimirImagen(file)
+      .then((imageUrl) => {
+        setPreview(imageUrl);
+        onChange(imageUrl);
+      })
+      .catch((err: Error) => {
+        setError(err.message);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      })
+      .finally(() => setProcesando(false));
   };
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,9 +150,10 @@ export function ImageUpload({ label, value, onChange, index }: ImageUploadProps)
         <button
           type="button"
           onClick={handleClick}
-          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-stone-50"
+          disabled={procesando}
+          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-stone-50 disabled:opacity-60"
         >
-          📁 Seleccionar imagen (máx. 2MB)
+          {procesando ? 'Procesando imagen…' : '📁 Seleccionar imagen (máx. 2MB)'}
         </button>
 
         <div className="text-center text-xs text-ink-muted">o</div>

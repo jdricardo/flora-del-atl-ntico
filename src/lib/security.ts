@@ -53,6 +53,22 @@ async function getEncryptionKey(): Promise<CryptoKey> {
 /**
  * Encripta datos para localStorage
  */
+/**
+ * Convierte bytes a una cadena binaria para `btoa`.
+ *
+ * Se recorre por bloques a propósito: `String.fromCharCode(...bytes)` pasa un
+ * argumento por byte, y con el catálogo completo (cientos de miles de bytes)
+ * eso desborda la pila de llamadas y el guardado falla entero.
+ */
+function bytesABinario(bytes: Uint8Array): string {
+  const BLOQUE = 0x8000;
+  let binario = '';
+  for (let i = 0; i < bytes.length; i += BLOQUE) {
+    binario += String.fromCharCode(...bytes.subarray(i, i + BLOQUE));
+  }
+  return binario;
+}
+
 export async function encryptData(data: string): Promise<string> {
   try {
     const encoder = new TextEncoder();
@@ -73,8 +89,7 @@ export async function encryptData(data: string): Promise<string> {
     combined.set(iv, 0);
     combined.set(new Uint8Array(encryptedBuffer), iv.length);
 
-    // Convertir a base64
-    return btoa(String.fromCharCode(...combined));
+    return btoa(bytesABinario(combined));
   } catch (error) {
     console.error('Error encriptando datos:', error);
     throw new Error('Error de encriptación');
@@ -86,10 +101,14 @@ export async function encryptData(data: string): Promise<string> {
  */
 export async function decryptData(encryptedData: string): Promise<string> {
   try {
-    // Convertir desde base64
-    const combined = new Uint8Array(
-      atob(encryptedData).split('').map(c => c.charCodeAt(0))
-    );
+    // Convertir desde base64. Se llena el buffer en un solo recorrido: hacer
+    // split('') de una cadena de cientos de miles de caracteres crea un array
+    // intermedio del mismo tamaño, innecesario aquí.
+    const binario = atob(encryptedData);
+    const combined = new Uint8Array(binario.length);
+    for (let i = 0; i < binario.length; i++) {
+      combined[i] = binario.charCodeAt(i);
+    }
 
     // Extraer IV y datos
     const iv = combined.slice(0, 12);
