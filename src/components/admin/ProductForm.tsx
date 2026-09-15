@@ -41,8 +41,14 @@ export function ProductForm({ product, onSubmit, submitLabel = 'Guardar' }: Prod
     badges: product?.badges || ([] as ProductBadge[]),
     stock: product?.stock ? String(product.stock) : '0',
     sameDayDelivery: product?.sameDayDelivery ?? true,
-    rating: product?.rating || 4.5,
-    reviewCount: product?.reviewCount || 0,
+    /*
+     * Con `||` un rating de 0 caía al valor por defecto, así que editar un
+     * producto sin reseñas le inventaba 4,5 estrellas. El formulario no
+     * expone el campo: se conserva lo que traiga y un producto nuevo nace
+     * sin calificación.
+     */
+    rating: product?.rating ?? 0,
+    reviewCount: product?.reviewCount ?? 0,
     tags: product?.tags?.join(', ') || '',
     images: product?.images || ['', '', ''],
     active: product?.active ?? true,

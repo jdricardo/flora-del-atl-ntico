@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
-import { PRODUCTS } from '@/data/products';
 import { CATEGORIES } from '@/data/categories';
+import { useAdminProductsStore } from '@/store/useAdminProductsStore';
+import { CatalogBackup } from '@/components/admin/CatalogBackup';
 
 export function DashboardPage() {
+  // Del store, no de `data/products`: si no, las cifras ignoran lo editado aquí.
+  const products = useAdminProductsStore((state) => state.products);
+  const activos = products.filter((p) => p.active).length;
+
   const stats = [
     {
       label: 'Total de productos',
-      value: PRODUCTS.length,
+      value: products.length,
       link: '/admin/productos',
       linkText: 'Ver todos',
     },
@@ -17,16 +22,16 @@ export function DashboardPage() {
       linkText: 'Gestionar',
     },
     {
-      label: 'Stock total',
-      value: PRODUCTS.reduce((sum, p) => sum + p.stock, 0),
-      link: '/admin/productos',
-      linkText: 'Revisar',
-    },
-    {
-      label: 'Productos activos',
-      value: PRODUCTS.length,
+      label: 'Publicados',
+      value: activos,
       link: '/admin/productos',
       linkText: 'Ver',
+    },
+    {
+      label: 'Sin publicar',
+      value: products.length - activos,
+      link: '/admin/productos',
+      linkText: 'Revisar',
     },
   ];
 
@@ -101,6 +106,8 @@ export function DashboardPage() {
           </Link>
         </div>
       </div>
+
+      <CatalogBackup />
     </div>
   );
 }

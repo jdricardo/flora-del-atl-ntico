@@ -29,6 +29,9 @@ interface AdminProductsState {
   getProduct: (id: string) => AdminProduct | undefined;
   getActiveProducts: () => AdminProduct[];
 
+  // Reemplaza el catálogo completo (importación desde archivo)
+  replaceAll: (products: AdminProduct[]) => void;
+
   // Reset
   resetToDefaults: () => void;
 }
@@ -138,6 +141,15 @@ export const useAdminProductsStore = create<AdminProductsState>()(
         return get().products.filter((product) => product.active);
       },
 
+      replaceAll: (products) => {
+        set({
+          products: products.map((product) => ({
+            ...product,
+            updatedAt: new Date().toISOString(),
+          })),
+        });
+      },
+
       resetToDefaults: () => {
         set({ products: initialAdminProducts });
       },
@@ -148,9 +160,9 @@ export const useAdminProductsStore = create<AdminProductsState>()(
       /**
        * Subir la versión descarta el catálogo guardado en el navegador y
        * recarga el de `data/products.ts`. Hay que subirla cada vez que el
-       * catálogo base cambie de fondo (v7: 7 productos nuevos sin precio).
+       * catálogo base cambie de fondo (v9: sincronizado con el catálogo del panel).
        */
-      version: 7,
+      version: 9,
       migrate: () => ({ products: initialAdminProducts }),
     }
   )

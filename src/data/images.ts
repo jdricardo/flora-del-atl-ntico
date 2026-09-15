@@ -3,7 +3,7 @@
  *
  * Las imágenes viven en `src/assets/images` y se resuelven en build (hash +
  * cache busting). Las fotos del catálogo impreso están en el subdirectorio
- * `catalogo/`, una por referencia (c01.jpg, b03.jpg, r17.jpg...).
+ * `catalogo/`, una por referencia (c04.jpg, b03.jpg, r17.jpg...).
  *
  * Cuando el catálogo venga de una API, `Product.images` recibirá URLs
  * absolutas y este módulo solo se usará para el contenido editorial.
