@@ -204,13 +204,6 @@ export interface ProcessStep {
   description: string;
 }
 
-export interface InspirationPost {
-  id: string;
-  image: string;
-  caption: string;
-  href: string;
-}
-
 /* ============================== UI ============================== */
 
 export type ToastVariant = 'success' | 'info' | 'error';

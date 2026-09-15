@@ -1,5 +1,4 @@
-import type { Benefit, FaqItem, InspirationPost, ProcessStep, Testimonial } from '@/types';
-import { img } from './images';
+import type { Benefit, FaqItem, ProcessStep, Testimonial } from '@/types';
 
 /** `icon` corresponde a una clave del registro de iconos en `components/ui/Icon.tsx`. */
 export const BENEFITS: Benefit[] = [
@@ -136,7 +135,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'faq-3',
     question: '¿Cuánto duran las flores frescas?',
     answer:
-      'Entre siete y diez días si cambias el agua cada dos días y las mantienes en un lugar fresco, alejadas del sol directo. Cada pedido incluye instrucciones de cuidado.',
+      'Entre 5 y 7 días si cambias el agua cada dos días y las mantienes en un lugar fresco, alejadas del sol directo. Cada pedido incluye instrucciones de cuidado.',
   },
   {
     id: 'faq-4',
@@ -168,15 +167,6 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       'Puedes modificar fecha, dirección o dedicatoria hasta 12 horas antes de la entrega. Una vez el arreglo entra en producción no es posible cancelarlo porque las flores se cortan especialmente para tu pedido.',
   },
-];
-
-export const INSPIRATION_POSTS: InspirationPost[] = [
-  { id: 'i1', image: img('inspiracion-1'), caption: 'Detrás del mostrador, un martes cualquiera', href: '#' },
-  { id: 'i2', image: img('inspiracion-2'), caption: 'Rosa empolvado y hoja de higuera', href: '#' },
-  { id: 'i3', image: img('inspiracion-3'), caption: 'Montaje para una boda en Guasca', href: '#' },
-  { id: 'i4', image: img('inspiracion-4'), caption: 'La mesa del taller a las siete de la mañana', href: '#' },
-  { id: 'i5', image: img('inspiracion-5'), caption: 'Preservación en curso', href: '#' },
-  { id: 'i6', image: img('inspiracion-6'), caption: 'Nueva colección Eterna', href: '#' },
 ];
 
 /** Mensajes de la barra promocional superior. */

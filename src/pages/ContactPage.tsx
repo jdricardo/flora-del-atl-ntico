@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { img } from '@/data/images';
 import { SITE, whatsappLink } from '@/data/site';
 import { useSeo } from '@/hooks/useSeo';
 import { useToast } from '@/context/ToastContext';
@@ -104,16 +103,6 @@ export function ContactPage() {
                 <Clock className="mt-0.5 size-4 shrink-0 text-clay" aria-hidden="true" />
                 {SITE.atelier.hours}
               </p>
-              <div className="grain mt-2 overflow-hidden rounded-lg bg-cream">
-                <img
-                  src={img('contacto-atelier')}
-                  alt="Floristería Flora del Atlántico en Malambo"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="aspect-16/9 w-full object-cover"
-                />
-              </div>
               <ButtonLink href={SITE.social.instagram} variant="secondary" size="sm" className="self-start">
                 Ver en Instagram
               </ButtonLink>
